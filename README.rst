@@ -17,11 +17,16 @@ Usage
 .. code-block:: python
 
     from metu_cafeteria_menu import fetch
+    from metu_cafeteria_menu.exceptions import DateException, RequestException
 
     try:
         menu = fetch('2016-05-19')
-    except:
-        ...
+    except RequestException as e:
+        # something went wrong while trying to connect to cafeteria website
+        print(str(e))
+    except DateException as e:
+        # menu is not available for the selected date, it may be weekend or holiday
+        print(str(e))
 
 
 License

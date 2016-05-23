@@ -2,6 +2,7 @@ import datetime
 import urllib.request
 from bs4 import BeautifulSoup
 from metu_cafeteria_menu.utils import to_title, to_upper, to_lower
+from metu_cafeteria_menu.exceptions import DateException, RequestException
 
 config = {
     'base_url': "http://kafeterya.metu.edu.tr/",
@@ -10,10 +11,13 @@ config = {
 
 
 def fetch(date=None):
-    date_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
+    if date is None:
+        date_obj = datetime.datetime.now()
+    else:
+        date_obj = datetime.datetime.strptime(date, '%Y-%m-%d')
 
     if date_obj.weekday() > 4:
-        raise ValueError("Cafeteria works only on weekdays.")
+        raise DateException("Cafeteria works only on weekdays.")
 
     menus = {
         'lunch': {
@@ -34,9 +38,15 @@ def fetch(date=None):
         },
     }
 
-    res = urllib.request.urlopen(
-        config.get('base_url') + config.get('req_path') + date_obj.strftime('%d-%m-%Y')
-    )
+    try:
+        res = urllib.request.urlopen(
+            config.get('base_url') + config.get('req_path') + date_obj.strftime('%d-%m-%Y')
+        )
+    except Exception as e:
+        raise RequestException(
+            parent_exception=e,
+            message="A problem occurred trying to connect to cafeteria's website, please try again later."
+        )
 
     soup = BeautifulSoup(res.read(), 'html.parser')
 
