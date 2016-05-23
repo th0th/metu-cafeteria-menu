@@ -7,12 +7,12 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
 
 setup(
     name='metu-cafeteria-menu',
-    version='0.0.2',
+    version='0.0.3',
     packages=['metu_cafeteria_menu'],
     description="A utility for fetching Middle East Technical University's cafeteria menu.",
     keywords=['metu', 'cafeteria', 'menu'],
     url='https://github.com/th0th/metu-cafeteria-menu',
-    download_url='https://github.com/th0th/metu-cafeteria-menu/tarball/0.0.2',
+    download_url='https://github.com/th0th/metu-cafeteria-menu/tarball/0.0.3',
     author=u'Gökhan Sarı',
     author_email='me@th0th.me',
     license='MIT',
