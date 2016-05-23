@@ -7,7 +7,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
 
 setup(
     name='metu-cafeteria-menu',
-    version='0.0.3',
+    version='0.0.4',
     packages=['metu_cafeteria_menu'],
     description="A utility for fetching Middle East Technical University's cafeteria menu.",
     test_suite='tests',
