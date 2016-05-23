@@ -1,9 +1,14 @@
 # -*- encoding: utf-8 -*-
+import os
 from setuptools import setup
+
+with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
+    long_description = readme.read()
 
 setup(
     name='metu-cafeteria-menu',
-    version='0.0.1',
+    version='0.0.2',
+    packages=['metu_cafeteria_menu'],
     description="A utility for fetching Middle East Technical University's cafeteria menu.",
     keywords=['metu', 'cafeteria', 'menu'],
     url='https://github.com/th0th/metu-cafeteria-menu',
