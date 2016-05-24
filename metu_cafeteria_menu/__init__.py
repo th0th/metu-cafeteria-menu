@@ -61,7 +61,7 @@ def fetch(date=None):
                 for meal in meals:
                     menus['lunch']['menu'].append({
                         'title': to_title(meal.find('p').contents[0]),
-                        'img': '%s%s' % (
+                        'image': '%s%s' % (
                             config.get('base_url'),
                             meal.find('img').get('src'),
                         )
@@ -75,7 +75,7 @@ def fetch(date=None):
                 for meal in meals:
                     menus['dinner']['menu'].append({
                         'title': to_title(meal.find('p').contents[0]),
-                        'img': '%s%s' % (
+                        'image': '%s%s' % (
                             config.get('base_url'),
                             meal.find('img').get('src'),
                         )
